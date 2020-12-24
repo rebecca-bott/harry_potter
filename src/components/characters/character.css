@@ -1,0 +1,19 @@
+.character-Container {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: wrap;
+  max-width: 100%;
+  align-items: center;
+  justify-content: center;
+}
+
+div.card {
+  min-width: 25rem;
+  max-width: 25rem;
+  margin: 1vw 1vh;
+}
+.card-img,
+.card-img-top {
+  max-height: 50vh;
+  min-height: 50vh;
+}

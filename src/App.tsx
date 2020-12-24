@@ -1,25 +1,60 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import "./App.css";
+import { Nav } from "react-bootstrap";
+import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
+import  Characters  from "./components/characters/Characters";
+import Potions from "./components/potions/Potions";
+import Spells from "./components/spells/Spells";
+import Home from "./components/home/Home";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
+    <Router>
+      <div className="App">
+        <Nav
+          activeKey={window.location.pathname}
+          onSelect={(selectedKey) => console.log({ selectedKey })}
+          variant="tabs"
+          justify
         >
-          Learn React
-        </a>
-      </header>
-    </div>
+          <Nav.Item>
+            <Nav.Link eventKey="/home">
+              <Link to="/home">Home</Link>
+            </Nav.Link>
+          </Nav.Item>
+          <Nav.Item>
+            <Nav.Link eventKey="potions">
+              <Link to="/potions">Potions</Link>
+            </Nav.Link>
+          </Nav.Item>
+          <Nav.Item>
+            <Nav.Link eventKey="characters">
+              <Link to="/characters">Characters</Link>
+            </Nav.Link>
+          </Nav.Item>
+          <Nav.Item>
+            <Nav.Link eventKey="Spells">
+            <Link to="/spells">Spells</Link>
+            </Nav.Link>
+          </Nav.Item>
+        </Nav>
+
+        <Switch>
+          <Route path="/home">
+            <Home />
+          </Route>
+          <Route path="/characters">
+            <Characters />
+          </Route>
+          <Route path="/potions">
+            <Potions />
+          </Route>
+          <Route path="/spells">
+            <Spells />
+          </Route>
+        </Switch>
+      </div>
+    </Router>
   );
 }
 
